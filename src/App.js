@@ -1,15 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+// import { Counter } from './features/counter/Counter';
+import { useEffect } from 'react'
+// import counterSlice from './features/counter/counterSlice';
 
 function App() {
+  const [state, setState] = React.useState({
+    username: '',
+    followers: 0,
+    subscribers: 0,
+    chat: null
+  })
+  const counter = React.useRef(0)
+
+useEffect(() => {
+  if(counter.current != null) {
+    counter.current += 1
+    const timer = setTimeout(() => setState({ num: state.num + 1}), 1000)
+    console.log(counter)
+    return () => clearTimeout(timer)
+  }
+})
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
+    <div className="w-[1920px] h-[1080px] max-w-[1920px] max-h-[1080px] bg-red-400">
+      <header className="w-full bg-green-200"><h1>testing</h1> </header>
+        
+        {/* <Counter /> */}
+        {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <span>
@@ -49,8 +68,7 @@ function App() {
           >
             React Redux
           </a>
-        </span>
-      </header>
+        </span> */}
     </div>
   );
 }
